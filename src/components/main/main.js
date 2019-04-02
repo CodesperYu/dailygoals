@@ -10,9 +10,17 @@ export default class Main extends Component {
 						<div className='list__header'>
 							<div className='list__title'>Daily Tasks</div>
 						</div>
-						<input className='list__input' placeholder='add task'></input>
-						<button type='submit' className='list__input__submit'>+</button>
-						<div className='list__task'>task</div>
+						<div className='list__input'>
+							<input className='list__input__add-task' placeholder='add task'></input>
+							<button type='submit' className='list__input__submit'>+</button>
+						</div>
+						<div className='list__task'>
+							<div className='list__task__name'>task</div>
+							<div className='list__task__options'>
+								<div className='list__task__complete'>&#10004;</div>
+								<div className='list__task__remove'>&#10006;</div>
+							</div>
+						</div>
 						<div className='list__task'>task</div>
 						<div className='list__task'>task</div>
 						<div className='list__task'>task</div>
