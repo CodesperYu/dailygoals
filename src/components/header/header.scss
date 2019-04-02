@@ -1,0 +1,14 @@
+.header {
+	background-color: rgb(50,205,50);
+	height: 5em;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center; 
+	padding-left: 1em;
+
+	&--font {
+		font-size: 3em;
+		font-family: 'Permanent Marker', cursive;
+		color: white;
+	}
+}

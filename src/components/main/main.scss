@@ -1,0 +1,39 @@
+.container {
+	background-color: white;
+	height: 100vh;
+	&__list {
+		padding: 2em 2em;
+		display: flex;
+		justify-content: flex-start;
+	}
+}
+
+.list {
+	width: 20em;
+	background-color: white;
+	margin: auto;
+	border-radius: 5px;
+	border: .5px solid rgb(233, 231, 231);
+	overflow: hidden;
+	background-color:rgb(230, 255, 230);
+	&__header {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center; 
+		background-color:rgb(50, 205, 50);
+		height: 3em;
+	}
+	&__title {
+		background-color: rgb(50, 205, 50);
+		color: white;
+		font-weight: bold;
+		padding-left: 1em;
+	}
+	&__task, &__input {
+		padding-left: 1em;
+		margin: .5em;
+		background-color: white;
+		border: .5px solid grey;
+		border-radius: 2px;
+	}
+}
