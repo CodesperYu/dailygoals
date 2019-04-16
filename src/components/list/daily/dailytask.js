@@ -7,8 +7,9 @@ export default class DailyTask extends Component {
 		}
 	}
 
-	handleComplete() {
-		
+	handleComplete(e) {
+		let taskId = e.target.attributes.taskid.value;
+		this.props.completeTask(taskId);
 	}
 
 	handleRemove(e) {
@@ -17,13 +18,20 @@ export default class DailyTask extends Component {
 	}
 
 	render() {
-		console.log(this.props.id);
 		return (
-			<div className="list__task">
-				<div className='list__task__name'>{this.props.task}</div>
-				<div className='list__task__options'>
-					<span value={this.props.id} className='list__task__complete'>&#10004;</span>
-					<span onClick={this.handleRemove.bind(this)} taskid={this.props.id} className='list__task__remove'>&#10006;</span>
+			<div className = "list__task">
+				<div className = 'list__task__name'>{this.props.task}</div>
+				<div className = 'list__task__options'>
+					<span 
+						taskid = { this.props.id } 
+						onClick = { this.handleComplete.bind(this) }
+						className ='list__task__complete'>&#10004;
+					</span>
+					<span 
+						onClick = { this.handleRemove.bind(this) } 
+						taskid = { this.props.id } 
+						className = 'list__task__remove'>&#10006;
+					</span>
 				</div>
 			</div>
 		);

@@ -4,28 +4,11 @@ import AddTask from './addtask';
 import './daily.scss';
 
 export default class Daily extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			tasks: [],
 		}
-	}
-
-	addTask(task) {
-		let updatedTaskList = this.state.tasks.concat(task);
-		this.setState({
-			tasks: updatedTaskList
-		})
-	};
-
-	removeTask(taskId) {
-		let newTaskList = this.state.tasks.filter(task => {
-			console.log(task.id, taskId);
-			return task.id.toString() !== taskId
-		});
-		this.setState({
-			tasks: newTaskList
-		})
 	}
 
 	render() {
@@ -34,15 +17,17 @@ export default class Daily extends Component {
 				<div className='list__header'>
 					<div className='list__title'>Daily Tasks</div>
 				</div>
-				<AddTask addTask={this.addTask.bind(this)}/>
+				<AddTask addTask={this.props.addTask}/>
 				<div className='list__alltask'>
 					{
-						this.state.tasks.map((task, i) => {
+						this.props.tasks.map((task, i) => {
 							return <DailyTask 
-							removeTask={this.removeTask.bind(this)} 
-							task={task.title} 
-							key={task.id} 
-							id={task.id}/>
+								removeTask = { this.props.removeTask }
+								completeTask = { this.props.completeTask }
+								task = { task.title } 
+								key = { task.id } 
+								id = { task.id } 
+							/>
 						})
 					}
 				</div>
