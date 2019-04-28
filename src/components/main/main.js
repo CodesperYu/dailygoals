@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import Daily from '../list/daily/daily';
 import Completed from '../list/completed/completed';
+import ProgressBar from '../progressbar/bar'
 import './main.scss'
 
 export default class Main extends Component {
@@ -57,6 +58,7 @@ export default class Main extends Component {
 	render() {
 		return (
 			<div className='container'>
+				<ProgressBar />
 				<div className='container__list'>
 					<Daily 
 						tasks = { this.state.tasks }

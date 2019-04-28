@@ -1,0 +1,17 @@
+.progress-bar {
+	border: 1px solid black;
+	border-radius: 50px;
+	height: 100%;
+	width: 100%;
+	&--percentage {
+		margin: 0 .5em .1em;
+	}
+	&--container {
+		height: 2em;
+		width: 63em;
+		margin: 2em 2em 1em;
+	}
+	&--fill {
+		
+	}
+}
