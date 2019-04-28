@@ -59,8 +59,8 @@ export default class Main extends Component {
 		return (
 			<div className='container'>
 				<ProgressBar 
-					incompletedTask = { this.state.tasks.length || 0 } 
-					completedTask = {this.state.completedTasks.length || 0}
+					incompleteTasks = { this.state.tasks.length || 0 } 
+					completedTasks = { this.state.completedTasks.length || 0 }
 				/>
 				<div className='container__list'>
 					<Daily 
