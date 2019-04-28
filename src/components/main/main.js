@@ -58,7 +58,10 @@ export default class Main extends Component {
 	render() {
 		return (
 			<div className='container'>
-				<ProgressBar />
+				<ProgressBar 
+					incompletedTask = { this.state.tasks.length || 0 } 
+					completedTask = {this.state.completedTasks.length || 0}
+				/>
 				<div className='container__list'>
 					<Daily 
 						tasks = { this.state.tasks }

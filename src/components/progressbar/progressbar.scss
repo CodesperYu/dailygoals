@@ -5,6 +5,7 @@
 	width: 100%;
 	&--percentage {
 		margin: 0 .5em .1em;
+		font-weight: 500;
 	}
 	&--container {
 		height: 2em;
@@ -12,6 +13,8 @@
 		margin: 2em 2em 1em;
 	}
 	&--fill {
-		
+		border-radius: inherit;
+		height: inherit;
+		background-color: #ffcba4;
 	}
 }

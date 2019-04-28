@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Fill from './fill';
 import './progressbar.scss'
 
 export default class Bar extends Component {
@@ -14,6 +15,7 @@ export default class Bar extends Component {
 			<div className='progress-bar--container'> 
 				<div className='progress-bar--percentage'>0%</div>
 				<div className='progress-bar'>
+					<Fill/>
 				</div>
 			</div>
 		)
