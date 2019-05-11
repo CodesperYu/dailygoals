@@ -22,11 +22,11 @@ input:focus {
 		font-weight: bold;
 		padding-left: 1em;
 	}
-	&__alltask{
+	&__allgoal{
 		overflow: scroll;
 		height: 25em;
 	}
-	&__task {
+	&__goal {
 		padding-left: .5em;
 		margin: .5em;
 		background-color: white;
@@ -57,7 +57,7 @@ input:focus {
 		overflow: hidden;
 		display: flex;
 		border: none;
-		&__add-task {
+		&__add-goal {
 			border: none;
 			width: 95%;
 			padding: .5em;

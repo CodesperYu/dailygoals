@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/src/server/private.js
 /.pnp
 .pnp.js
 

@@ -15,9 +15,7 @@ export default class Bar extends Component {
 	}
 
 	componentDidUpdate() {
-		if (this.hasCompletionChange()) {
-			this.updateCompletion();
-		}
+		if (this.hasCompletionChange()) { this.updateCompletion() }
 	}
 
 	hasCompletionChange() {
@@ -26,9 +24,7 @@ export default class Bar extends Component {
 
 	getPercentageCompletion() {
 		let percentage = 0;
-		if (!this.isTaskEmpty()) {
-			percentage = (this.props.completedTasks / (this.props.incompleteTasks + this.props.completedTasks) * 100); 
-		}
+		if (!this.isGoalEmpty()) { percentage = (this.props.completedGoals / (this.props.incompleteGoals + this.props.completedGoals) * 100) }
 		return percentage.toFixed(2) + '%';
 	}
  
@@ -39,12 +35,11 @@ export default class Bar extends Component {
 		})
 	}
 
-	isTaskEmpty() {
-		return this.props.completedTasks === 0 && this.props.incompleteTasks === 0
+	isGoalEmpty() {
+		return this.props.completedGoals === 0 && this.props.incompleteGoals === 0
 	}
 	
 	render() {
-		console.log(this.props.incompleteTasks);
 		return (
 			<div className='progress-bar--container'> 
 				<div className='progress-bar--percentage'> {this.state.completion} </div>

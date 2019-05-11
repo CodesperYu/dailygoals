@@ -8,70 +8,105 @@ export default class Main extends Component {
 	constructor() {
 		super()
 		this.state = {
-			tasks: [],
-			completedTasks: [],
+			username: null,
+			goals: [],
+			completedGoals: [],
 		}
 	}
 
-	addTask(task) {
-		let updatedTaskList = this.state.tasks.concat(task);
+	componentDidMount() {
+    this.getGoals()
+      .then(res => {
+				let goals = res.map((goal) => {
+					console.log(goal);
+					return {
+						title: goal.GoalName,
+						id: goal.Goal_ID
+					}
+				});
+				console.log(goals);
+        this.setState({ goals: goals })
+      })
+      .catch(err => console.log(err)
+    );
+	}
+	
+	getGoals = async () => {
+		console.log('hello');
+		const response = await fetch('/getGoals');
+		console.log(response);
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message) 
+    }
+    return body;
+  };
+
+  handleSubmit = async e => {
+  };
+
+	addGoal(goal) {
+		let updatedGoalList = this.state.goals.concat(goal);
 		this.setState({
-			tasks: updatedTaskList
+			goals: updatedGoalList
 		})
+		console.log(this.state.goals);
 	};
 
-	removeTask(taskId) {
-		let updatedtaskList = this.state.tasks.filter(task => {
-			return task.id.toString() !== taskId
+	removeGoal(goalId) {
+		let updatedGoalList = this.state.goals.filter(goal => {
+			return goal.id.toString() !== goalId
 		});
 		this.setState({
-			tasks: updatedtaskList
+			goals: updatedGoalList
 		})
 	}
 
-	completeTask(taskId) {
-		let completedTask = null;
-		let updatedTaskList = this.state.tasks.filter(task => {
-			if (task.id.toString() === taskId) {
-				completedTask = task;
+	completeGoal(goalId) {
+		let completedGoal = null;
+		let updatedGoalList = this.state.goals.filter(goal => {
+			if (goal.id.toString() === goalId) {
+				completedGoal = goal;
 			}
-			return task.id.toString() !== taskId
+			return goal.id.toString() !== goalId
 		});
 
-		let updatedCompletedTaskList = [...this.state.completedTasks, completedTask];
+		let updatedCompletedGoalList = [...this.state.completedGoals, completedGoal];
 
 		this.setState({
-			tasks: updatedTaskList,
-			completedTasks: updatedCompletedTaskList
+			goals: updatedGoalList,
+			completedGoals: updatedCompletedGoalList
 		});
 	}
 
-	removeCompletedTask(taskId) {
-		let updatedCompletedTaskList = this.state.completedTasks.filter(task => {
-			return task.id.toString() !== taskId
+	removeCompletedGoal(goalId) {
+		let updatedCompletedGoalList = this.state.completedGoals.filter(goal => {
+			return goal.id.toString() !== goalId
 		});
 		this.setState({
-			completedTasks: updatedCompletedTaskList,
+			completedGoals: updatedCompletedGoalList,
 		})
 	}
 
 	render() {
 		return (
 			<div className='container'>
+		  	<h3>Welcome { this.state.username } </h3>
 				<ProgressBar 
-					incompleteTasks = { this.state.tasks.length || 0 } 
-					completedTasks = { this.state.completedTasks.length || 0 }
+					incompleteGoals = { this.state.goals.length || 0 } 
+					completedGoals = { this.state.completedGoals.length || 0 }
 				/>
 				<div className='container__list'>
 					<Daily 
-						tasks = { this.state.tasks }
-						addTask = { this.addTask.bind(this) }
-						removeTask = { this.removeTask.bind(this) }
-						completeTask = { this.completeTask.bind(this) }
+						goals = { this.state.goals }
+						addGoal = { this.addGoal.bind(this) }
+						removeGoal = { this.removeGoal.bind(this) }
+						completeGoal = { this.completeGoal.bind(this) }
 					/>
 					<Completed 
-						completedTasks = { this.state.completedTasks }
-						removeCompletedTask = { this.removeCompletedTask.bind(this) }
+						completedGoals = { this.state.completedGoals }
+						removeCompletedGoal = { this.removeCompletedGoal.bind(this) }
 					/>
 				</div>
 			</div>

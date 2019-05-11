@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class AddTask extends Component {
+export default class AddGoal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,11 +27,11 @@ export default class AddTask extends Component {
 	handleClick(e) {
 		e.preventDefault();
 		let id = this.generateId();
-		let task = {
+		let goal = {
 			title: this.state.input,
 			id: id
 		}
-		this.props.addTask(task);
+		this.props.addGoal(goal);
 		this.setState({
 			input: '',
 		})
@@ -40,7 +40,7 @@ export default class AddTask extends Component {
 	render() {
 		return (
 			<form className='list__input'>
-				<input className='list__input__add-task' value={this.state.input} placeholder='add task' onChange={this.handleChange.bind(this)}></input>
+				<input className='list__input__add-goal' value={this.state.input} placeholder='add goal' onChange={this.handleChange.bind(this)}></input>
 				<button type='submit' className='list__input__submit' onClick={this.handleClick.bind(this)}>+</button>
 			</form>
 		)

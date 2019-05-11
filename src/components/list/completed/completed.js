@@ -1,29 +1,29 @@
 import React, { Component } from 'react'
-import CompletedTask from './completedtask'
+import CompletedGoal from './completedgoal'
 
 export default class Completed extends Component {
 
-	removeTask(taskId) {
-		console.log(taskId);
+	removeGoal(goalId) {
+		console.log(goalId);
 	}
 	
 	render() {
 		return (
 			<div className='list' id='list--2'>
 				<div className='list__header'>
-					<div className='list__title'>Completed Tasks</div>
+					<div className='list__title'>Completed Goals</div>
 				</div>
-				<div className='list__alltask'>
+				<div className='list__allgoal'>
 					{
-						this.props.completedTasks.length ? 
-						this.props.completedTasks.map((task) => {
-							return <CompletedTask
-							removeTask = { this.props.removeCompletedTask } 
-							task = { task.title }  
-							key = { task.id } 
-							id = { task.id }/>
+						this.props.completedGoals.length ? 
+						this.props.completedGoals.map((goal) => {
+							return <CompletedGoal
+							removeGoal = { this.props.removeCompletedGoal } 
+							goal = { goal.title }  
+							key = { goal.id } 
+							id = { goal.id }/>
 						}) : 			
-						<div className = "list__task" style= {{ visibility: 'hidden' }}>
+						<div className = "list__goal" style= {{ visibility: 'hidden' }}>
 						</div>
 					}
 				</div>
