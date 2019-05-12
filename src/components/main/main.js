@@ -18,13 +18,11 @@ export default class Main extends Component {
     this.getGoals()
       .then(res => {
 				let goals = res.map((goal) => {
-					console.log(goal);
 					return {
 						title: goal.GoalName,
 						id: goal.Goal_ID
 					}
 				});
-				console.log(goals);
         this.setState({ goals: goals })
       })
       .catch(err => console.log(err)
@@ -32,11 +30,8 @@ export default class Main extends Component {
 	}
 	
 	getGoals = async () => {
-		console.log('hello');
 		const response = await fetch('/getGoals');
-		console.log(response);
     const body = await response.json();
-
     if (response.status !== 200) {
       throw Error(body.message) 
     }
@@ -46,12 +41,22 @@ export default class Main extends Component {
   handleSubmit = async e => {
   };
 
-	addGoal(goal) {
+	addGoal = async goal => {
+		goal.userId = 1;
+		const response = await fetch('goal/postGoals', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(goal)
+		}).then((res) => res.json())
+		.then(result => {console.log (result)}).catch(err => console.log('error: ', err));
+
 		let updatedGoalList = this.state.goals.concat(goal);
+		
 		this.setState({
 			goals: updatedGoalList
 		})
-		console.log(this.state.goals);
+		
+		// console.log(this.state.goals);
 	};
 
 	removeGoal(goalId) {
